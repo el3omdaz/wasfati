@@ -403,7 +403,7 @@ async function callAI(prompt){
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions',{
       method:'POST',
       headers:{'Content-Type':'application/json','Authorization':`Bearer ${settings.apiKey}`,'HTTP-Referer':'https://wasafati.app','X-Title':'Wasafati'},
-      body:JSON.stringify({model:'google/gemini-2.0-flash',max_tokens:1200,messages:[{role:'user',content:prompt}]})
+      body:JSON.stringify({model:'google/gemini-2.5-flash-lite',max_tokens:1200,messages:[{role:'user',content:prompt}]})
     });
     if(!res.ok){const e=await res.json().catch(()=>({}));throw new Error(e?.error?.message||'HTTP '+res.status);}
     const data=await res.json();
